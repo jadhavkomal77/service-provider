@@ -16,7 +16,7 @@ app.use(express.static("dist"))
 // }))
 
 app.use(cors({
-    origin: process.env.NODE_ENV === "devlopment"
+    origin: process.env.NODE_ENV === "production"
         ? "http://localhost:5173"
         : process.env.LIVE_SERVER
 }))
