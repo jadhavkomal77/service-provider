@@ -9,15 +9,18 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.static("dist"))
-app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
-}))
+
 // app.use(cors({
-//     origin: process.env.NODE_ENV === "devlopment"
-//         ? "http://localhost:5173"
-//         : process.env.LIVE_SERVER
+//     origin: "http://localhost:5173",
+//     credentials: true
 // }))
+
+app.use(cors({
+    origin: process.env.NODE_ENV === "devlopment"
+        ? "http://localhost:5173"
+        : process.env.LIVE_SERVER
+}))
+
 app.use("/api/admin", require("./routes/admin.route"))
 app.use("/api/professional", require("./routes/professional.route"))
 
